@@ -2,6 +2,11 @@ alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
 rearrangedAlphabet = []
 firstInput = str(input("A is equal to: "))
 firstInput = firstInput.upper()
+thirdInput = str(input("Convert cipher into binary? "))
+if thirdInput.lower() == "yes":
+    thirdInput = True
+else:
+    thirdInput = False
 if not firstInput in alphabet:
     print("Input not in alphabet. Default value is 'R'")
     firstInput = "R"
@@ -12,7 +17,7 @@ secondInput = str(input("Move forwards? "))
 if secondInput.lower() == "yes":
     secondInput = True
 else:
-    secondInput = False
+    secondInput = Frsalse
 location = alphabet.index(firstInput)
 if secondInput:
     for x in range(len(alphabet)):
@@ -49,6 +54,14 @@ if secondInput:
 else:
     newword.insert(0, "F")
 newword.insert(0, rearrangedAlphabet[0])
-for letter in newword:
-    wordsplitcon = wordsplitcon + str(letter)
+if not thirdInput:
+    for letter in newword:
+        wordsplitcon = wordsplitcon + str(letter)
+else:
+    word2 = ""
+    for letter in newword:
+        binary = bin(ord(str(letter)))[2:]
+        word2 = word2 + str(chr(int(binary, 2)))
+        wordsplitcon = wordsplitcon + str(binary) + str(" ")
+    print("Ciphered word not in binary:", word2)
 print("Ciphered sentence:", wordsplitcon)
